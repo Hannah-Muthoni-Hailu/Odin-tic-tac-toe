@@ -36,7 +36,7 @@ class Board
 
   def win(number, player)
     # Check row
-    return check_col(number, player) || check_diag(number, player) ? true : false
+    return check_col(number, player) || check_diag(number, player) || check_row(number, player) ? true : false
   end
 
   def check_col(number, player)
@@ -50,7 +50,13 @@ class Board
   end
 
   def check_row(number, player)
-    return true
+    if number < 4
+      return @board[0] == player && @board[1] == player && @board[2] == player ? true : false
+    elsif number < 7
+      return @board[3] == player && @board[4] == player && @board[5] == player ? true : false
+    else
+      return @board[6] == player && @board[7] == player && @board[8] == player ? true : false
+    end
   end
 
   def check_diag(number, player)
@@ -59,7 +65,6 @@ class Board
     elsif [3, 5, 7].include?(number)
       return @board[2] == player && @board[4] == player && @board[6] == player ? true : false
     else
-      puts "Num in neither"
       return false
     end
   end
