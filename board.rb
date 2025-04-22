@@ -23,7 +23,7 @@ class Board
       @board[number - 1] = player # Update
       @play_count += 1 # Increment play count
       # Check if player has won
-      if @play_count >= 6 && win(number)
+      if @play_count >= 5 && win(number, player)
         return "Won"
       end
       # Check if the board is full and the game is a draw
@@ -34,7 +34,26 @@ class Board
     end
   end
 
-  def win(number)
-    return false
+  def win(number, player)
+    # Check row
+    return check_col(number, player) ? true : false
+  end
+
+  def check_col(number, player)
+    if number % 3 == 1
+      return @board[0] == player && @board[3] == player && @board[6] == player ? true : false
+    elsif number % 3 == 2
+      return @board[1] == player && @board[4] == player && @board[7] == player ? true : false
+    else
+      return @board[2] == player && @board[5] == player && @board[8] == player ? true : false
+    end
+  end
+
+  def check_row(number, player)
+    return true
+  end
+
+  def check_diag(number, player)
+    return true
   end
 end
