@@ -66,4 +66,36 @@ describe Board do
       end
     end
   end
+
+  describe "#check_col" do
+    context "when the first column is full" do
+      before do
+        board.board[0] = board.board[3] = board.board[6] = 'X'
+      end
+      
+      it "informs the player that they have won" do
+        expect(board.check_col(1, 'X')).to be true
+      end
+    end
+
+    context "when the second column is full" do
+      before do
+        board.board[1] = board.board[4] = board.board[7] = 'X'
+      end
+      
+      it "informs the player that they have won" do
+        expect(board.check_col(2, 'X')).to be true
+      end
+    end
+
+    context "when the third column is full" do
+      before do
+        board.board[2] = board.board[5] = board.board[8] = 'X'
+      end
+      
+      it "informs the player that they have won" do
+        expect(board.check_col(3, 'X')).to be true
+      end
+    end
+  end
 end
