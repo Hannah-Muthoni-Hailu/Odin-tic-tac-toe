@@ -1,4 +1,5 @@
 class Board
+  attr_accessor :board, :play_count
   def initialize()
     # Fill the board with numbers
     @board = [1, 2, 3, 4, 5, 6, 7, 8, 9]
